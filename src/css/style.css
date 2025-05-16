@@ -210,6 +210,7 @@ button {
   font-size: var(--small-font);
   /* max-height: 120px; */
   align-items: center;
+  position: relative;
 }
 
 .cart-card__image {
@@ -239,6 +240,22 @@ button {
 .cart-card__price {
   grid-row: 2;
   grid-column: 3;
+}
+
+.remove-from-cart {
+  position: absolute;
+  top: 10px;
+  right: -30px;
+  padding: 5px;
+  background-color: transparent;
+  color: #950f0f;
+  padding: 8px 8px 0;
+  border-radius: 100%;
+  transition: all 0.1s linear;
+}
+
+.remove-from-cart:hover {
+  background-color: rgba(0, 0, 0, 0.1);
 }
 
 @media screen and (min-width: 500px) {
