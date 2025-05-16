@@ -36,3 +36,20 @@ export function renderListWithTemplate(templateFn, parentElement, list, position
   }
   parentElement.insertAdjacentHTML(position, htmlStrings.join(""));
 }
+
+export function updateCartCount() {
+  const countElement = document.getElementById("cart-count");
+  const cart = JSON.parse(localStorage.getItem("so-cart")) || [];
+  if (countElement) {
+    countElement.textContent = cart.length;
+  }
+}
+
+// updates the cart badge right away
+export function addItemToCart(product) {
+  const cart = getLocalStorage("so-cart") || [];
+  cart.push(product);
+  setLocalStorage("so-cart", cart);
+  updateCartCount(); 
+}
+
