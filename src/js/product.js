@@ -10,7 +10,7 @@ const product = new ProductDetails(productId, dataSource);
 product.init();
 
 document.addEventListener("DOMContentLoaded", () => {
-    updateCartCount();
+  updateCartCount();
 });
 
 // add to cart button event handler

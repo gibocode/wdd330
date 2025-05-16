@@ -120,12 +120,11 @@ button {
 /* Cart icon styles */
 .cart {
   position: relative;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    width: 25px;
-    height: 40px;
-
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 25px;
+  height: 40px;
 }
 
 .cart svg {
@@ -246,7 +245,7 @@ button {
   grid-column: 3;
 }
 
-.cart-icon{
+.cart-icon {
   position: relative;
   display: inline-block;
 }
@@ -265,7 +264,6 @@ button {
   min-width: 20px;
   text-align: center;
 }
-
 
 @media screen and (min-width: 500px) {
   body {

@@ -9,5 +9,5 @@ const tentList = new ProductList("tents", dataSource, listElement);
 tentList.init();
 
 document.addEventListener("DOMContentLoaded", () => {
-    updateCartCount();
+  updateCartCount();
 });
