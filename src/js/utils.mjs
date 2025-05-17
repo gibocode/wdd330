@@ -39,7 +39,7 @@ export function renderListWithTemplate(templateFn, parentElement, list, position
 
 export function updateCartCount() {
   const countElement = document.getElementById("cart-count");
-  const cart = JSON.parse(localStorage.getItem("so-cart")) || [];
+  const cart = getLocalStorage("so-cart") || [];
   if (countElement) {
     countElement.textContent = cart.length;
   }
