@@ -1,4 +1,5 @@
 import { getLocalStorage, setLocalStorage } from "./utils.mjs";
+import { addItemToCart} from "./utils.mjs";
 
 export default class ProductDetails {
   constructor(productId, dataSource) {
@@ -12,13 +13,14 @@ export default class ProductDetails {
     this.renderProductDetails();
     document
       .getElementById("addToCart")
-      .addEventListener("click", this.addProductToCart.bind(this));
+      .addEventListener("click", this.addToCart.bind(this));
   }
 
-  addProductToCart() {
-    const cartItems = getLocalStorage("so-cart") || [];
-    cartItems.push(this.product);
-    setLocalStorage("so-cart", cartItems);
+  addToCart(e) {
+    const productId = e.target.dataset.id;
+    this.dataSource.findProductById(productId).then((product) => {
+      addItemToCart(product); 
+    });
   }
 
   renderProductDetails() {
@@ -34,7 +36,7 @@ function productDetailsTemplate(product) {
   productImage.src = product.Image;
   productImage.alt = product.NameWithoutBrand;
 
-  document.getElementById("productPrice").textContent = product.FinalPrice;
+  document.getElementById("productPrice").textContent = `$${product.FinalPrice}`;
   document.getElementById("productColor").textContent = product.Colors[0].ColorName;
   document.getElementById("productDesc").innerHTML = product.DescriptionHtmlSimple;
 
