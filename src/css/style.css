@@ -137,6 +137,17 @@ button {
 
 /* End cart icon styles */
 
+/* Alert styles */
+.alert-list {
+  margin-bottom: 1rem;
+}
+.alert-list p {
+  padding: 0.5rem 1rem;
+  margin: 0;
+  border-radius: 4px;
+  font-weight: bold;
+}
+
 .mission {
   position: absolute;
   top: 1rem;
