@@ -1,6 +1,7 @@
 import Alert from "./Alert.js";
 import ProductData from "./ProductData.mjs";
 import ProductList from "./ProductList.mjs";
+import { updateCartCount } from "./utils.mjs";
 
 document.addEventListener("DOMContentLoaded", () => {
   // Initialize site-wide alerts
@@ -11,4 +12,6 @@ document.addEventListener("DOMContentLoaded", () => {
   const element = document.querySelector(".product-list");
   const productList = new ProductList("Tents", dataSource, element);
   productList.init();
+
+  updateCartCount();
 });
