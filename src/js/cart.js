@@ -4,10 +4,14 @@ function renderCartContents() {
   const cartItems = getLocalStorage("so-cart") || [];
   const htmlItems = cartItems.map((item) => cartItemTemplate(item));
   document.querySelector(".product-list").innerHTML = htmlItems.join("");
+  updateCartCount();
+  displayCartTotal();
   // Adds listener to all remove from cart buttons
   const removeButtons = document.querySelectorAll(".remove-from-cart");
-  removeButtons.forEach(removeButton => {
-    removeButton.addEventListener("click", () => removeItemFromCart(removeButton.getAttribute("data-id")));
+  removeButtons.forEach((removeButton) => {
+    removeButton.addEventListener("click", () =>
+      removeItemFromCart(removeButton.getAttribute("data-id")),
+    );
   });
 }
 
@@ -42,21 +46,16 @@ function removeItemFromCart(itemId) {
 }
 
 function displayCartTotal() {
-  const cartItems = getLocalStorage("so-cart");
-  // check if cart is empty. if so, display message
-  if (!cartItems || cartItems.length === 0) {
-    return document.querySelector(".cart-footer").innerHTML =
-      `Your cart is empty.`;
-  } else {
+  const cartItems = getLocalStorage("so-cart") || [];
+  const cartTotal = document.querySelector(".cart-total");
+  let cartTotalText = "";
+  if (cartItems.length > 0) {
     const total = cartItems.reduce((acc, item) => acc + item.FinalPrice, 0);
-    const cartFooter = document.querySelector(".cart-total.hide");
-    cartFooter.classList.replace("hide", "show");
-
-    cartFooter.innerHTML = `Total: $${total}`;
+    cartTotalText = `Total: $${total}`;
+  } else {
+    cartTotalText = "Your cart is empty.";
   }
+  cartTotal.textContent = cartTotalText;
 }
 
-displayCartTotal();
-
 renderCartContents();
-updateCartCount();
