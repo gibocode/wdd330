@@ -1,4 +1,4 @@
-import { getLocalStorage, updateCartCount } from "./utils.mjs";
+import { getLocalStorage, setLocalStorage, updateCartCount } from "./utils.mjs";
 
 function renderCartContents() {
   const cartItems = getLocalStorage("so-cart") || [];
@@ -6,6 +6,11 @@ function renderCartContents() {
   document.querySelector(".product-list").innerHTML = htmlItems.join("");
   updateCartCount();
   displayCartTotal();
+  // Adds listener to all remove from cart buttons
+  const removeButtons = document.querySelectorAll(".remove-from-cart");
+  removeButtons.forEach(removeButton => {
+    removeButton.addEventListener("click", () => removeItemFromCart(removeButton.getAttribute("data-id")));
+  });
 }
 
 function cartItemTemplate(item) {
@@ -22,9 +27,20 @@ function cartItemTemplate(item) {
   <p class="cart-card__color">${item.Colors[0].ColorName}</p>
   <p class="cart-card__quantity">qty: 1</p>
   <p class="cart-card__price">$${item.FinalPrice}</p>
+  <button class="remove-from-cart" title="Remove from cart" data-id="${item.Id}">
+    <svg width="25" height="25" fill="currentColor" viewBox="0 0 512 512" xmlns="http://www.w3.org/2000/svg"><title/><rect height="80" rx="32" ry="32" width="448" x="32" y="48"/><path d="M74.45,160a8,8,0,0,0-8,8.83L92.76,421.39a1.5,1.5,0,0,0,0,.22A48,48,0,0,0,140.45,464H371.54a48,48,0,0,0,47.67-42.39l0-.21,26.27-252.57a8,8,0,0,0-8-8.83ZM323.31,340.69a16,16,0,1,1-22.63,22.62L256,318.63l-44.69,44.68a16,16,0,0,1-22.63-22.62L233.37,296l-44.69-44.69a16,16,0,0,1,22.63-22.62L256,273.37l44.68-44.68a16,16,0,0,1,22.63,22.62L278.62,296Z"/></svg>
+  </button>
 </li>`;
 
   return newItem;
+}
+
+// Remove item from cart by ID (TO DO: this removes same product IDs - this task will be resolved on other tasks)
+function removeItemFromCart(itemId) {
+  let cartItems = getLocalStorage("so-cart");
+  cartItems = cartItems.filter((item) => item.Id != itemId);
+  setLocalStorage("so-cart", cartItems);
+  renderCartContents();
 }
 
 function displayCartTotal() {
