@@ -218,6 +218,28 @@ button {
   width: 100%;
 }
 
+.product-detail .product-card__srp {
+  text-decoration: line-through;
+  color: gray;
+  font-size: 1rem;
+  padding-bottom: 0;
+}
+
+.product-detail .product-card__price {
+  font-size: 1.5rem;
+  font-weight: 700;
+  display: flex;
+}
+
+.product-detail .product-card__discount {
+  font-size: 1rem;
+  color: #fff;
+  background-color: #c11010;
+  padding: 5px;
+  margin-left: 10px;
+  border-radius: 5px;
+}
+
 /* Start cart list card styles */
 .cart-card {
   display: grid;
