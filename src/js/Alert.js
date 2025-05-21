@@ -10,7 +10,7 @@ export default class Alert {
       const alerts = await res.json();
       if (alerts.length) this.render(alerts);
     } catch (err) {
-      console.error("Failed to load alerts:", err);
+      // console.error("Failed to load alerts:", err);
     }
   }
 

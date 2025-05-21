@@ -50,6 +50,31 @@ export function addItemToCart(product) {
   const cart = getLocalStorage("so-cart") || [];
   cart.push(product);
   setLocalStorage("so-cart", cart);
-  updateCartCount(); 
+  updateCartCount();
 }
 
+export function renderWithTemplate(template, parentElement, data, callback) {
+  parentElement.innerHTML = template;
+  if (callback) {
+    callback(data);
+  }
+}
+
+async function loadTemplate(path) {
+  const response = await fetch(path);
+  const template = await response.text();
+  return template;
+}
+
+export async function loadHeaderFooter() {
+  const header = await loadTemplate("../partials/header.html");
+  const footer = await loadTemplate("../partials/footer.html");
+
+  const headerElement = document.querySelector("#main-header");
+  const footerElement = document.querySelector("#main-footer");
+
+  renderWithTemplate(header, headerElement);
+  renderWithTemplate(footer, footerElement);
+
+  updateCartCount();
+}
