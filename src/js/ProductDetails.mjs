@@ -1,4 +1,3 @@
-import { getLocalStorage, setLocalStorage } from "./utils.mjs";
 import { addItemToCart} from "./utils.mjs";
 
 export default class ProductDetails {
