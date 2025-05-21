@@ -190,7 +190,6 @@ button {
   padding: 0.5em;
   border: 1px solid var(--light-grey);
   max-width: 250px;
-
   position: relative;
 }
 
