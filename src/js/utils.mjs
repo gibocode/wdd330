@@ -60,7 +60,7 @@ export function renderWithTemplate(template, parentElement, data, callback) {
   }
 }
 
-async function loadTemplate(path) {
+export async function loadTemplate(path) {
   const response = await fetch(path);
   const template = await response.text();
   return template;
@@ -77,4 +77,23 @@ export async function loadHeaderFooter() {
   renderWithTemplate(footer, footerElement);
 
   updateCartCount();
+}
+
+export async function loadCartTemplate() {
+  const cartTemplate = await loadTemplate("../partials/cartItem.html");
+
+  const cartElement = document.querySelector(".product-list");
+  const cartItems = getLocalStorage("so-cart") || [];
+
+  renderWithTemplate(cartTemplate, cartElement, cartItems);
+}
+
+function interpolate(template, data) {
+  return template.replace(/\$\{([\w\.]+)\}/g, (_, key) => {
+    return key.split(".").reduce((obj, prop) => obj?.[prop], data) ?? "";
+  });
+}
+
+export function renderWithTemplate2(template, parentElement, dataList) {
+  parentElement.innerHTML = dataList.map(item => interpolate(template, item)).join("");
 }
