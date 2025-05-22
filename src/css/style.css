@@ -190,6 +190,23 @@ button {
   padding: 0.5em;
   border: 1px solid var(--light-grey);
   max-width: 250px;
+  position: relative;
+}
+
+.ruban-discount {
+  position: absolute;
+  border-top: 100px solid red;
+  border-right: 100px solid transparent;
+  border-bottom: 100px solid transparent;
+}
+
+.ruban-discount::before {
+  content: "-$" attr(data-discount);
+  color: #fff;
+  position: absolute;
+  top: -70px;
+  left: 0px;
+  transform: rotate(-45deg);
 }
 
 .product-card h2,
