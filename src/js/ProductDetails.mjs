@@ -1,4 +1,4 @@
-import { addItemToCart} from "./utils.mjs";
+import { addItemToCart } from "./utils.mjs";
 
 export default class ProductDetails {
   constructor(productId, dataSource) {
@@ -10,14 +10,12 @@ export default class ProductDetails {
   async init() {
     this.product = await this.dataSource.findProductById(this.productId);
     this.renderProductDetails();
-    document
-      .getElementById("addToCart")
-      .addEventListener("click", this.addToCart.bind(this));
+    document.getElementById("addToCart").addEventListener("click", this.addToCart.bind(this));
   }
 
   addToCart(e) {
     const productId = e.target.dataset.id;
-    this.dataSource.findProductById(productId).then((product) => {
+    this.dataSource.findProductById(productId).then(product => {
       addItemToCart(product);
     });
   }
@@ -32,7 +30,7 @@ function productDetailsTemplate(product) {
   document.querySelector("h3").textContent = product.NameWithoutBrand;
 
   const productImage = document.getElementById("productImage");
-  productImage.src = product.Image;
+  productImage.src = product.Images.PrimaryLarge;
   productImage.alt = product.NameWithoutBrand;
 
   const productSuggestedRetailPrice = product.SuggestedRetailPrice;
@@ -49,6 +47,5 @@ function productDetailsTemplate(product) {
   document.getElementById("productPrice").innerHTML = productPriceText;
   document.getElementById("productColor").textContent = product.Colors[0].ColorName;
   document.getElementById("productDesc").innerHTML = product.DescriptionHtmlSimple;
-
   document.getElementById("addToCart").dataset.id = product.Id;
 }
