@@ -29,6 +29,12 @@ export function getParam(param) {
   return product;
 }
 
+// Return all the query parameters at once - SearchBox
+export function getParams() {
+  const queryString = window.location.search;
+  return Object.fromEntries(new URLSearchParams(queryString));
+}
+
 export function renderListWithTemplate(templateFn, parentElement, list, position = "afterbegin", clear = false) {
   const htmlStrings = list.map(templateFn);
   if (clear) {
