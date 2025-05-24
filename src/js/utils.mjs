@@ -41,14 +41,24 @@ export function updateCartCount() {
   const countElement = document.getElementById("cart-count");
   const cart = getLocalStorage("so-cart") || [];
   if (countElement) {
-    countElement.textContent = cart.length;
+    countElement.textContent = cart.reduce((sum, item) => sum + (item.quantity || 1), 0);
   }
 }
 
 // updates the cart badge right away
 export function addItemToCart(product) {
   const cart = getLocalStorage("so-cart") || [];
-  cart.push(product);
+  let existingItem = cart.find(item => item.Id === product.Id);
+
+  if (existingItem) {
+    existingItem.quantity = (existingItem.quantity || 1) + 1;
+    existingItem.totalPrice = existingItem.quantity * existingItem.FinalPrice; // test
+  } else {
+    product.quantity = 1;
+    product.totalPrice = product.FinalPrice;
+    cart.push(product);
+
+  }
   setLocalStorage("so-cart", cart);
   updateCartCount();
 }
