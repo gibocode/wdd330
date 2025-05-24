@@ -97,3 +97,9 @@ function interpolate(template, data) {
 export function renderWithTemplate2(template, parentElement, dataList) {
   parentElement.innerHTML = dataList.map(item => interpolate(template, item)).join("");
 }
+
+export function formatToTitle(text) {
+  const parts = text.split("-");
+  const title = parts.map((part) => part.charAt(0).toUpperCase() + part.slice(1));
+  return title.join(" ");
+}

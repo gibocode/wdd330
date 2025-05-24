@@ -7,7 +7,7 @@ export default class ShoppingCart {
   }
 
   async init() {
-    const cartTemplate = await loadTemplate("../partials/cartItem.html");
+    const cartTemplate = await loadTemplate("/partials/cartItem.html");
     const cartItems = getLocalStorage("so-cart") || [];
 
     renderWithTemplate2(cartTemplate, this.listElement, cartItems);
@@ -28,7 +28,7 @@ export default class ShoppingCart {
     let cartTotalText = "";
     if (cartItems.length > 0) {
       const total = cartItems.reduce((acc, item) => acc + item.FinalPrice, 0);
-      cartTotalText = `Total: $${total}`;
+      cartTotalText = `Total: $${total.toFixed(2)}`;
     } else {
       cartTotalText = "Your cart is empty.";
     }

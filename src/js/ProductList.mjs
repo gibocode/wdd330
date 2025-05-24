@@ -1,4 +1,4 @@
-import { renderListWithTemplate } from "./utils.mjs";
+import { renderListWithTemplate, formatToTitle } from "./utils.mjs";
 
 function productCardTemplate(product) {
   const discounted = product.FinalPrice < product.SuggestedRetailPrice;
@@ -7,9 +7,9 @@ function productCardTemplate(product) {
     discount = product.SuggestedRetailPrice - product.FinalPrice;
   }
   return `<li class="product-card">
-   <div class="${discounted ? 'ruban-discount' : ''}" data-discount="${discount.toFixed(2)}"></div>
-    <a href="product_pages/?product=${product.Id}">
-      <img src="${product.Image}" alt="Image of ${product.Name}">
+   <div class="${discounted ? "ruban-discount" : ""}" data-discount="${discount.toFixed(2)}"></div>
+    <a href="/product_pages/?product=${product.Id}">
+      <img src="${product.Images.PrimaryLarge}" alt="Image of ${product.Name}">
       <h2 class="card__brand">${product.Brand.Name}</h2>
       <h3 class="card__name">${product.Name}</h3>
       <p class="product-card__price">$${product.FinalPrice}</p>
@@ -24,7 +24,8 @@ export default class ProductList {
     this.listElement = listElement;
   }
   async init() {
-    const list = await this.dataSource.getData();
+    const list = await this.dataSource.getData(this.category);
+    document.querySelector(".products > h2").innerHTML += ` - ${formatToTitle(this.category)}`;
     this.renderList(list);
   }
   renderList(list) {
