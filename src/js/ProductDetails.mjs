@@ -31,8 +31,12 @@ function productDetailsTemplate(product) {
   document.querySelector("h2").textContent = product.Brand.Name;
   document.querySelector("h3").textContent = product.NameWithoutBrand;
 
+  const imagePath320 = product.Image;
+  const imagePath640 = product.Image.replace("~320.jpg", "~640.jpg");
+
+  document.getElementById("productImage640").srcset = imagePath640;
   const productImage = document.getElementById("productImage");
-  productImage.src = product.Image;
+  productImage.src = imagePath320;
   productImage.alt = product.NameWithoutBrand;
 
   const productSuggestedRetailPrice = product.SuggestedRetailPrice;
