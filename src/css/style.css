@@ -97,7 +97,8 @@ p {
 
 /* search box */
 
-.search-form, .checkout-button {
+.search-form,
+.checkout-button {
   display: flex;
   align-items: center;
   gap: 0.5rem;
