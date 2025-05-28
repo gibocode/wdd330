@@ -97,8 +97,7 @@ p {
 
 /* search box */
 
-.search-form,
-.checkout-button {
+.search-form {
   display: flex;
   align-items: center;
   gap: 0.5rem;
@@ -444,15 +443,6 @@ button {
   content: "/";
   padding: 0 0.5em;
 }
-
-
-.cart-footer {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-}
-
-
 
 @media screen and (min-width: 500px) {
   body {

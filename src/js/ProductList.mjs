@@ -9,7 +9,7 @@ function productCardTemplate(product) {
     discount = product.SuggestedRetailPrice - product.FinalPrice;
   }
   return `<li class="product-card">
-    <div class="${discounted ? "ruban-discount" : ""}" data-discount="${discount.toFixed(2)}"></div>
+   <div class="${discounted ? "ruban-discount" : ""}" data-discount="${discount.toFixed(2)}"></div>
     <a href="/product_pages/?product=${product.Id}">
       <img src="${product.Images.PrimaryMedium}" alt="Image of ${product.Name}">
       <h2 class="card__brand">${product.Brand.Name}</h2>
@@ -66,7 +66,7 @@ export default class ProductList {
         this.listElement.insertAdjacentElement("afterend", resetBtn);
       }
     }
-    
+
     const resetButton = document.getElementById("reset-search");
     if (resetButton) {
       resetButton.addEventListener("click", () => {
