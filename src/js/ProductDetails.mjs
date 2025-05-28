@@ -1,4 +1,6 @@
 import { addItemToCart } from "./utils.mjs";
+import BreadcrumbItem from "./components/BreadcrumbItem.js";
+import BreadcrumbList from "./components/BreadcrumbList.js";
 
 export default class ProductDetails {
   constructor(productId, dataSource) {
@@ -13,6 +15,18 @@ export default class ProductDetails {
     document
       .getElementById("add-to-cart")
       .addEventListener("click", this.addToCart.bind(this));
+
+    // Breadcrumb
+    const breadcrumbItems = [
+      [this.product.Category, `/product_listing/?category=${this.product.Category}`],
+      [this.product.Name, null, true]
+    ];
+    const breadcrumbList = new BreadcrumbList();
+    breadcrumbItems.forEach(itemData => {
+      const breadcrumItem = new BreadcrumbItem(itemData[0], itemData[1], itemData[2] ?? false);
+      breadcrumbList.addItem(breadcrumItem);
+    });
+    breadcrumbList.renderItems();
   }
 
   addToCart(e) {
