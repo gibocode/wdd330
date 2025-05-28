@@ -8,7 +8,7 @@
 
     <title>Sleep Outside | Checkout</title>
 
-    <link rel="stylesheet" href="css/style.css" />
+    <link rel="stylesheet" href="/css/style.css" />
   </head>
 
   <body>
@@ -59,7 +59,31 @@
 
     <main class="divider">
       <section class="products">
-        <h2>Review & Place your Order</h2>
+        <!-- <h2>Review & Place your Order</h2> -->
+        <form name="checkout" id="checkout-form">
+          <fieldset>
+            <legend>Review & Place your Order</legend>
+            <div class="customer-info">Customer Information</div>
+            <label>First Name <span class="required">*</span> <input type="text" name="fname" title="Please enter your first name" autocomplete="name" placeholder="John" required></label>
+            <label>Last Name <span class="required">*</span> <input type="text" name="lname" title="Please enter your last name" autocomplete="name" placeholder="Doe" required></label>
+            <label>Street Address <span class="required">*</span> <input type="text" name="address" title="Please enter your street address" autocomplete="address-line1" placeholder="123 Main St" required></label>
+            <label>City <span class="required">*</span> <input type="text" name="city" title="Please enter your city" autocomplete="address-level2" placeholder="Anytown" required></label>
+            <label>State <span class="required">*</span> <input type="text" name="state" title="Please enter your state" autocomplete="address-level1" placeholder="CA" required></label>
+            <label>Zip Code <span class="required">*</span> <input type="text" name="zip" title="Please enter your zip code" autocomplete="postal-code" placeholder="12345" required></label>
+            <div class="payment-info">Payment Information</div>
+            <label>Credit Card Number <span class="required">*</span> <input type="number" name="credit-card-number" title="Please enter your credit card number" autocomplete="cc-number" placeholder="1234 567891 23456" required></label>
+            <label>Expiration Date <span class="required">*</span> <input type="date" name="expiration-date" title="Please enter your expiration date" placeholder="MM/YY" autocomplete="cc-exp" required></label>
+            <label>Security Code <span class="required">*</span> <input type="number" name="security-code" title="Please enter your security code" autocomplete="cc-csc" placeholder="123" required></label>
+            <input type="submit" value="Place Order" class="checkout-button2" />
+          </fieldset>
+        </form>
+        <div class="cart-summary">
+          <h2 class="order-summary">Order Summary</h2>
+          <p class="order-subtotal">Subtotal: $<span id="subtotal">0.00</span></p>
+          <p class="order-tax">Tax: $<span id="tax">0.00</span></p>
+          <p class="order-shipping">Shipping Estimate: $<span id="shipping">0.00</span></p>
+          <p class="order-total">Total: $<span id="total">0.00</span></p>
+        </div>
       </section>
     </main>
 
