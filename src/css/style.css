@@ -423,6 +423,27 @@ button {
   text-align: center;
 }
 
+.breadcrumb {
+  margin: 20px 0;
+  list-style: none;
+  display: flex;
+}
+
+.breadcrumb a {
+  color: var(--tertiary-color);
+  text-decoration: none;
+}
+
+.breadcrumb a:hover {
+  color: var(--primary-color);
+  text-decoration: underline;
+}
+
+.breadcrumb li:not(:first-child)::before {
+  content: "/";
+  padding: 0 0.5em;
+}
+
 @media screen and (min-width: 500px) {
   body {
     max-width: 1080px;
