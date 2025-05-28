@@ -1,6 +1,6 @@
 import { addItemToCart } from "./utils.mjs";
-import BreadcrumbItem from "./components/BreadcrumbItem.js";
-import BreadcrumbList from "./components/BreadcrumbList.js";
+import BreadcrumbItem from "./components/BreadcrumbItem";
+import BreadcrumbList from "./components/BreadcrumbList";
 
 export default class ProductDetails {
   constructor(productId, dataSource) {

@@ -1,6 +1,6 @@
 import { renderListWithTemplate, getParams } from "./utils.mjs";
-import BreadcrumbItem from "./components/BreadcrumbItem.js";
-import BreadcrumbList from "./components/BreadcrumbList.js";
+import BreadcrumbItem from "./components/BreadcrumbItem";
+import BreadcrumbList from "./components/BreadcrumbList";
 
 function productCardTemplate(product) {
   const discounted = product.FinalPrice < product.SuggestedRetailPrice;

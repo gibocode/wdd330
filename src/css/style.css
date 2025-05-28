@@ -445,11 +445,14 @@ button {
   padding: 0 0.5em;
 }
 
+
 .cart-footer {
   display: flex;
   justify-content: space-between;
   align-items: center;
 }
+
+
 
 @media screen and (min-width: 500px) {
   body {
