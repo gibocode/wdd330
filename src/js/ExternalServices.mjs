@@ -24,14 +24,22 @@ export default class ExternalServices {
     const data = await convertToJson(response);
     return data.Result;
   }
-    async checkout(payload) {
-    const options = {
+  
+  async checkout(payload) {
+    
+    let url = "http://wdd330-backend.onrender.com/checkout";
+    let h = new Headers();
+    h.append("Content-Type", "application/json");
+    
+    const response = await fetch(url, {
       method: "POST",
-      headers: {
-        "Content-Type": "application/json",
-      },
+      headers: h,
       body: JSON.stringify(payload),
-    };
-    return await fetch(`${baseURL}checkout/`, options).then(convertToJson);
+    });
+
+    const data = await convertToJson(response);
+    return data.Result;
+
   }
+
 }
