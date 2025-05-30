@@ -46,8 +46,8 @@ export default class CheckoutProcess {
     const summaryElement = document.querySelector(this.outputSelector + " #cartTotal");
     const itemNumElement = document.querySelector(this.outputSelector + " #num-items");
     itemNumElement.innerText = this.list.length;
-    const amounts = this.list.map((item) => item.FinalPrice);
-    this.itemTotal = amounts.reduce((sum, item) => sum + item);
+    //const amounts = this.list.map((item) => item.FinalPrice);
+    this.itemTotal = this.list.reduce((sum, item) => sum + item.FinalPrice * item.quantity, 0);
     summaryElement.innerText = `$${this.itemTotal}`;
   }
 
