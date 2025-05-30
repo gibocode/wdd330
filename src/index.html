@@ -28,16 +28,6 @@
           </p>
         </div>
       </div>
-      <form id="search-form" class="search-form" role="search">
-        <input
-          type="text"
-          id="search-input"
-          name="query"
-          placeholder="Search products..."
-          required
-        />
-        <button type="submit">Search</button>
-      </form>
       <section class="products">
         <ul class="product-grid">
           <li>
@@ -65,6 +55,38 @@
             </a>
           </li>
         </ul>
+      </section>
+      <section class="newsletter-row">
+        <div class="newsletter-img">
+          <img
+            src="/images/newsletter.png"
+            alt="newsletter preview"
+            style="width: 100%; max-width: 150px; height: auto"
+          />
+        </div>
+        <div class="newsletter-content">
+          <h2>Stay in the Loop!</h2>
+          <p>
+            Subscribe to our newsletter and be the first to know about new
+            arrivals, exclusive offers, and outdoor tips.
+          </p>
+          <form id="newsletter-form" class="newsletter-form">
+            <input
+              type="text"
+              id="first-name"
+              placeholder="First Name"
+              required
+            />
+            <input
+              type="email"
+              id="newsletter-email"
+              placeholder="Your Email"
+              required
+            />
+            <button type="submit">SIGN UP</button>
+          </form>
+          <p class="newsletter-message" id="newsletter-message"></p>
+        </div>
       </section>
     </main>
     <footer id="main-footer"></footer>

@@ -22,8 +22,7 @@
         <form name="checkout" id="checkout-form">
           <input type="hidden" name="orderDate" id="orderDate" />
           <fieldset>
-            <legend>Your Information</legend>
-            <!-- <div class="checkout__name">Customer Information -->
+            <legend>Shipping</legend>
             <div class="checkout__name">
               <label
                 >First Name <span class="required">*</span>
@@ -53,8 +52,8 @@
                 >Street Address <span class="required">*</span>
                 <input
                   type="text"
-                  name="address"
-                  id="address"
+                  name="street"
+                  id="street"
                   title="Please enter your street address"
                   autocomplete="address-line1"
                   value="123 Main St"
@@ -79,18 +78,22 @@
                   id="state"
                   title="Please enter your state"
                   autocomplete="address-level1"
-                  value="CA"
+                  value="ID"
+                  pattern="[A-Z]{2}"
+                  maxlength="2"
                   required
               /></label>
               <label
                 >Zip Code <span class="required">*</span>
                 <input
-                  type="text"
+                  type="number"
                   name="zip"
                   id="zip"
                   title="Please enter your zip code"
                   autocomplete="postal-code"
-                  value="12345"
+                  value="83440"
+                  pattern="[0-9]{5}"
+                  maxlength="5"
                   required
               /></label>
             </div>
@@ -102,35 +105,34 @@
                 >Credit Card Number <span class="required">*</span>
                 <input
                   type="tel"
-                  name="card-number"
-                  id="card-number"
+                  name="cardNumber"
+                  id="cardNumber"
                   title="Please enter your credit card number"
                   autocomplete="cc-number"
-                  value="1234 1234 1234 1234"
+                  value="1234123412341234"
                   pattern="[0-9\s\-]{13,19}"
                   maxlength="19"
                   required
               /></label>
-              <!-- <label>Credit Card Number <span class="required">*</span> <input type="tel" name="credit-card-number" id="expiration-date" title="Please enter your credit card number" autocomplete="cc-number" placeholder="1234 1234 1234 1234" pattern="[0-9\s-]{13,19}" required></label> -->
               <label
                 >Expiration Date <span class="required">*</span>
                 <input
                   type="text"
-                  name="expiration-date"
-                  id="expiration-date"
+                  name="expiration"
+                  id="expiration"
                   title="Please enter your expiration date"
                   autocomplete="cc-exp"
                   value="01/28"
                   pattern="\d{2}/\d{2}"
+                  maxlength="5"
                   required
               /></label>
-              <!-- <label>Expiration Date <span class="required">*</span> <input type="number" name="expiration-date" id="expiration-date" title="Please enter your expiration date" autocomplete="cc-exp" placeholder="MM/YY" required></label> -->
               <label
                 >Security Code <span class="required">*</span>
                 <input
                   type="tel"
-                  name="security-code"
-                  id="security-code"
+                  name="code"
+                  id="code"
                   title="Please enter your security code"
                   autocomplete="cc-csc"
                   value="123"
