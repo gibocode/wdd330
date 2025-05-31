@@ -13,3 +13,10 @@ document.addEventListener("DOMContentLoaded", () => {
 });
 
 loadHeaderFooter();
+
+document.querySelector("#add-to-cart").addEventListener("click", () => {
+  const cartIcon = document.querySelector(".cart-icon");
+  cartIcon.classList.remove("animation");
+  void cartIcon.offsetWidth;
+  cartIcon.classList.add("animation");
+});

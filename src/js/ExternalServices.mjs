@@ -1,10 +1,12 @@
 const baseURL = import.meta.env.VITE_SERVER_URL;
+// const baseURL = "http://server-nodejs.cit.byui.edu:3000/";
 
-function convertToJson(res) {
+async function convertToJson(res) {
+  const data = await res.json();
   if (res.ok) {
-    return res.json();
+    return data;
   } else {
-    throw new Error("Bad Response");
+    throw { name: "servicesError", message: data };
   }
 }
 
@@ -41,5 +43,17 @@ export default class ExternalServices {
     return data.Result;
 
   }
+  
+  async getAllProducts() {
+    const categories = ["tents", "backpacks", "sleeping-bags", "hammocks"];
+    const allProducts = [];
 
+    for (let cat of categories) {
+      const response = await fetch(`${baseURL}products/search/${cat}`);
+      const data = await response.json(); // or convertToJson()
+      allProducts.push(...data.Result);
+    }
+
+    return allProducts;
+    }
 }

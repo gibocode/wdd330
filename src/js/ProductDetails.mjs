@@ -1,4 +1,4 @@
-import { addItemToCart } from "./utils.mjs";
+import { addItemToCart, alertMessage } from "./utils.mjs";
 import BreadcrumbItem from "./components/BreadcrumbItem";
 import BreadcrumbList from "./components/BreadcrumbList";
 
@@ -33,6 +33,7 @@ export default class ProductDetails {
     const productId = e.target.dataset.id;
     this.dataSource.findProductById(productId).then((product) => {
       addItemToCart(product);
+      alertMessage(`${product.NameWithoutBrand} has been added to your cart.`);
     });
   }
 
