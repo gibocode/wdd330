@@ -13,12 +13,13 @@ export default class ExternalServices {
     // this.category = category;
     // this.path = `../json/${this.category}.json`;
   }
+  
   async getData(category) {
     const response = await fetch(`${baseURL}products/search/${category}`);
     const data = await convertToJson(response);
-
     return data.Result;
   }
+  
   async findProductById(id) {
     const response = await fetch(`${baseURL}product/${id}`);
     const data = await convertToJson(response);
@@ -35,11 +36,20 @@ export default class ExternalServices {
       method: "POST",
       headers: h,
       body: JSON.stringify(payload),
-    });
-
-    const data = await convertToJson(response);
-    return data.Result;
-
+    };
+    return await fetch(`${baseURL}checkout/`, options).then(convertToJson);
   }
+  
+  async getAllProducts() {
+    const categories = ["tents", "backpacks", "sleeping-bags", "hammocks"];
+    const allProducts = [];
 
+    for (let cat of categories) {
+      const response = await fetch(`${baseURL}products/search/${cat}`);
+      const data = await response.json(); // or convertToJson()
+      allProducts.push(...data.Result);
+    }
+
+    return allProducts;
+  }
 }

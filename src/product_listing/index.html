@@ -15,7 +15,16 @@
       <nav aria-label="Breadcrumb">
         <ul class="breadcrumb"></ul>
       </nav>
-
+      <form id="search-form" class="search-form" role="search">
+        <input
+          type="text"
+          id="search-input"
+          name="query"
+          placeholder="Search products..."
+          required
+        />
+        <button type="submit">Search</button>
+      </form>
       <section class="products">
         <h2>Top Products: <span class="title highlight"></span></h2>
         <ul class="product-list"></ul>
