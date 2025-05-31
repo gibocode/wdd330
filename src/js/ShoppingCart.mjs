@@ -1,4 +1,4 @@
-import { renderWithTemplate2, getLocalStorage, setLocalStorage, loadTemplate, updateCartCount } from "./utils.mjs";
+import { renderWithTemplate2, getLocalStorage, setLocalStorage, loadTemplate, updateCartCount, updateCartQtyInLocalStorage } from "./utils.mjs";
 
 export default class ShoppingCart {
   constructor(listElement) {
@@ -12,6 +12,11 @@ export default class ShoppingCart {
 
     renderWithTemplate2(cartTemplate, this.listElement, cartItems);
 
+    if (cartItems.length > 0) {
+      this.increaseQuanity();
+      this.decreaseQuanity();
+    }
+
     const removeButtons = document.querySelectorAll(".remove-from-cart");
     removeButtons.forEach((removeButton) => {
       removeButton.addEventListener("click", () =>
@@ -24,11 +29,11 @@ export default class ShoppingCart {
 
   displayCartTotal() {
     const cartItems = getLocalStorage("so-cart") || [];
-    const cartTotal = document.querySelector(".cart-total");
+    const cartTotal = document.querySelector(".cart-total span");
     let cartTotalText = "";
     if (cartItems.length > 0) {
       const total = cartItems.reduce((acc, item) => acc + item.FinalPrice * (item.quantity || 1), 0);
-      cartTotalText = `Total: $${total.toFixed(2)}`;
+      cartTotalText = total.toFixed(2);
     } else {
       cartTotalText = "Your cart is empty.";
     }
@@ -49,5 +54,65 @@ export default class ShoppingCart {
     setLocalStorage("so-cart", cartItems);
 
     this.init();
+  }
+
+  increaseQuanity() {
+    const buttons = document.querySelectorAll(".qty-up");
+    buttons.forEach((button) => {
+      button.addEventListener("click", (event) => {
+        event.preventDefault();
+        const data = event.currentTarget.getAttribute('data-id');
+        const productId = data.split(",")[0];
+        const productPrice = data.split(",")[1];
+
+        const span = document.getElementById(`qty-${productId}`);
+        const total = document.querySelector('.cart-total span');
+
+        const oldQty = parseInt(span.textContent, 10);
+        const currentTotal = parseFloat(total.textContent);
+        const price = parseFloat(productPrice);
+
+        let newQty = 0;
+        if (oldQty >= 1) {
+          newQty += 1;
+          let sum = currentTotal + newQty * price;
+          span.textContent = oldQty + newQty;
+          total.textContent  = sum.toFixed(2);
+        }
+
+        updateCartQtyInLocalStorage(productId, parseInt(span.textContent));
+        updateCartCount();
+      });
+    });
+  }
+
+  decreaseQuanity() {
+    const buttons = document.querySelectorAll(".qty-down");
+    buttons.forEach((button) => {
+      button.addEventListener("click", (event) => {
+        event.preventDefault();
+        const data = event.currentTarget.getAttribute('data-id');
+        const productId = data.split(",")[0];
+        const productPrice = data.split(",")[1];
+
+        const span = document.getElementById(`qty-${productId}`);
+        const total = document.querySelector('.cart-total span');
+
+        const oldQty = parseInt(span.textContent, 10);
+        const currentTotal = parseFloat(total.textContent);
+        const price = parseFloat(productPrice);
+       
+        let newQty = 0;
+        if (oldQty > 1) {
+          newQty += 1;
+          let sum = currentTotal - (newQty * price);
+          span.textContent = oldQty - newQty;
+          total.textContent  = sum.toFixed(2);
+        }
+
+        updateCartQtyInLocalStorage(productId, parseInt(span.textContent));
+        updateCartCount();
+      });
+    });
   }
 }
