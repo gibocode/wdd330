@@ -68,9 +68,8 @@ export default class CheckoutProcess {
     orderTotal.innerText = `$${this.orderTotal.toFixed(2)}`;
   }
 
-  async checkout() {
-    const formElement = document.forms["checkout"];
-    const order = formDataToJSON(formElement);
+  async checkout(form) {
+    const order = formDataToJSON(form);
 
     order.orderDate = new Date().toISOString();
     order.orderTotal = this.orderTotal;
