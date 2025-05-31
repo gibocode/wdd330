@@ -19,7 +19,7 @@
     <main class="divider">
       <section class="products">
         <h2>Review & Place your Order</h2>
-        <form name="checkout" id="checkout-form">
+        <form name="checkout" id="checkout-form" action="#">
           <input type="hidden" name="orderDate" id="orderDate" />
           <fieldset>
             <legend></legend>
@@ -53,8 +53,8 @@
                 >Street Address <span class="required">*</span>
                 <input
                   type="text"
-                  name="address"
-                  id="address"
+                  name="street"
+                  id="street"
                   title="Please enter your street address"
                   autocomplete="address-line1"
                   value="123 Main St"
@@ -102,8 +102,8 @@
                 >Credit Card Number <span class="required">*</span>
                 <input
                   type="tel"
-                  name="card-number"
-                  id="card-number"
+                  name="cardNumber"
+                  id="cardNumber"
                   title="Please enter your credit card number"
                   autocomplete="cc-number"
                   value="1234 1234 1234 1234"
@@ -116,8 +116,8 @@
                 >Expiration Date <span class="required">*</span>
                 <input
                   type="text"
-                  name="expiration-date"
-                  id="expiration-date"
+                  name="expiration"
+                  id="expiration"
                   title="Please enter your expiration date"
                   autocomplete="cc-exp"
                   value="01/28"
@@ -129,8 +129,8 @@
                 >Security Code <span class="required">*</span>
                 <input
                   type="tel"
-                  name="security-code"
-                  id="security-code"
+                  name="code"
+                  id="code"
                   title="Please enter your security code"
                   autocomplete="cc-csc"
                   value="123"
