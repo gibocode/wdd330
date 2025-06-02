@@ -29,28 +29,31 @@ export default class ShoppingCart {
 
   displayCartTotal() {
     const cartItems = getLocalStorage("so-cart") || [];
-    const cartTotal = document.querySelector(".cart-total span");
+    const cartTotal = document.querySelector(".cart-total");
     let cartTotalText = "";
     if (cartItems.length > 0) {
       const total = cartItems.reduce((acc, item) => acc + item.FinalPrice * (item.quantity || 1), 0);
-      cartTotalText = total.toFixed(2);
+      cartTotalText = `Total: $<span>${total.toFixed(2)}</span>`;
     } else {
       cartTotalText = "Your cart is empty.";
     }
-    cartTotal.textContent = cartTotalText;
+    cartTotal.innerHTML = cartTotalText;
   }
 
   removeItemFromCart(itemId) {
     let cartItems = getLocalStorage("so-cart") || [];
     const itemIndex = cartItems.findIndex(item => item.Id == itemId);
 
-    if (itemIndex > -1) {
+    // Removes 1 element at index {itemIndex}
+    cartItems.splice(itemIndex, 1);
+    
+    /* if (itemIndex > -1) {
       if ((cartItems[itemIndex].quantity || 1) > 1) {
         cartItems[itemIndex].quantity -= 1;
       } else {
         cartItems.splice(itemIndex, 1);
       }
-    }
+    } */
     setLocalStorage("so-cart", cartItems);
 
     this.init();
