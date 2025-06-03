@@ -77,7 +77,7 @@ export function addItemToCart(product) {
 }
 
 export function renderWithTemplate(template, parentElement, data, callback) {
-  parentElement.innerHTML = template;
+  parentElement.innerHTML = template; 
   if (callback) {
     callback(data);
   }
@@ -140,4 +140,18 @@ export function alertMessage(message, scroll = true, duration = 3000) {
 export function removeAllAlerts() {
   const alerts = document.querySelectorAll(".alert");
   alerts.forEach((alert) => document.querySelector("main").removeChild(alert));
+}
+
+export function getProductComments(productId) {
+  const allComments = getLocalStorage("product-comments") || {};
+  return allComments[productId] || [];
+}
+
+export function saveProductComment(productId, commentObj) {
+  const allComments = getLocalStorage("product-comments") || {};
+  if (!allComments[productId]) {
+    allComments[productId] = [];
+  }
+  allComments[productId].push(commentObj);
+  setLocalStorage("product-comments", allComments);
 }

@@ -9,7 +9,7 @@ function productCardTemplate(product) {
     discount = product.SuggestedRetailPrice - product.FinalPrice;
   }
   return `<li class="product-card">
-   <div class="${discounted ? "ruban-discount" : ""}" data-discount="${discount.toFixed(2)}"></div>
+    <div class="${discounted ? "ruban-discount" : ""}" data-discount="${discount.toFixed(2)}"></div>
     <a href="/product_pages/?product=${product.Id}">
       <img src="${product.Images.PrimaryMedium}" alt="Image of ${product.Name}">
       <h2 class="card__brand">${product.Brand.Name}</h2>
@@ -20,14 +20,14 @@ function productCardTemplate(product) {
 }
 
 export default class ProductList {
-  constructor(selectedCategory, dataSource, listElement) {
-    this.selectedCategory = selectedCategory;
+  constructor(Selectedcategory, dataSource, listElement) {
+    this.Selectedcategory = Selectedcategory;
     this.dataSource = dataSource;
     this.listElement = listElement;
   }
 
   async init(searchTerm = "") {
-    const productList = await this.dataSource.getData(this.selectedCategory);
+    const productList = await this.dataSource.getData(this.Selectedcategory);
 
     const filteredList = searchTerm
       ? productList.filter((product) =>
@@ -40,7 +40,7 @@ export default class ProductList {
 
     const title = document.querySelector(".title");
     if (title) {
-      const categoryFormatted = this.selectedCategory
+      const categoryFormatted = this.Selectedcategory
         .split("-")
         .map((word) => word[0].toUpperCase() + word.slice(1))
         .join(" ");
@@ -50,7 +50,11 @@ export default class ProductList {
     }
 
     // Breadcrumb
-    const breadcrumbItem = new BreadcrumbItem(`${this.selectedCategory} (${filteredList.length} Items)`, null, true);
+    const breadcrumbItem = new BreadcrumbItem(
+      `${this.Selectedcategory} (${filteredList.length} Items)`,
+      null,
+      true
+    );
     const breadcrumbList = new BreadcrumbList();
     breadcrumbList.addItem(breadcrumbItem);
     breadcrumbList.renderItems();
@@ -58,9 +62,10 @@ export default class ProductList {
 
   renderList(list) {
     this.listElement.innerHTML = "";
+
     if (list.length === 0) {
       this.listElement.innerHTML = `
-        <p class="no-results">No products found matching your search. </p>
+        <p class="no-results">No products found matching your search.</p>
         <button id="reset-search" class="reset-button">Back to All Products</button>
       `;
     } else {
@@ -76,11 +81,12 @@ export default class ProductList {
       }
     }
 
+    // Add listener to reset button
     const resetButton = document.getElementById("reset-search");
     if (resetButton) {
-      const selectedCategory = getParams().category || "tents";
+      const Selectedcategory = getParams().category || "tents";
       resetButton.addEventListener("click", () => {
-        window.location.href = `/product_listing/index.html?category=${selectedCategory}`;
+        window.location.href = `/product_listing/index.html?category=${Selectedcategory}`;
       });
     }
   }
