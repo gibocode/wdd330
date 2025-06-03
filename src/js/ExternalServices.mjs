@@ -26,13 +26,13 @@ export default class ExternalServices {
     const data = await convertToJson(response);
     return data.Result;
   }
-  
+
   async checkout(payload) {
-    
+
     let url = "http://wdd330-backend.onrender.com/checkout";
     let h = new Headers();
     h.append("Content-Type", "application/json");
-    
+
     const response = await fetch(url, {
       method: "POST",
       headers: h,
@@ -43,7 +43,7 @@ export default class ExternalServices {
     return data.Result;
 
   }
-  
+
   async getAllProducts() {
     const categories = ["tents", "backpacks", "sleeping-bags", "hammocks"];
     const allProducts = [];

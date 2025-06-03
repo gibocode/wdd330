@@ -15,6 +15,7 @@ loadHeaderFooter().then(() => {
       }
     });
   }
+
   const params = getParams();
   const searchCategory = params.category || "tents";
   const searchTerm = params.search || "";

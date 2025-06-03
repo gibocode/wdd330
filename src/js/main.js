@@ -14,9 +14,9 @@ document.addEventListener("DOMContentLoaded", () => {
       e.preventDefault();
       const query = document.getElementById("search-input").value.trim();
       const urlParams = new URLSearchParams(window.location.search);
-      const selectedCategory = urlParams.get("category") || "tents";
+      const Selectedcategory = urlParams.get("category") || "tents";
       if (query) {
-        window.location.href = `/src/product_listing/index.html?category=${selectedCategory}&search=${encodeURIComponent(query)}`;
+        window.location.href = `/src/product_listing/index.html?category=${Selectedcategory}&search=${encodeURIComponent(query)}`;
       }
     });
   }
