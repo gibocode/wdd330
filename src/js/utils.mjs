@@ -51,6 +51,13 @@ export function updateCartCount() {
   }
 }
 
+export function updateCartQtyInLocalStorage(id, qty) {
+  let cartItems = getLocalStorage("so-cart") || [];
+  const itemIndex = cartItems.findIndex(item => item.Id == id);
+  cartItems[itemIndex].quantity = qty;
+  setLocalStorage("so-cart", cartItems);
+}
+
 // updates the cart badge right away
 export function addItemToCart(product) {
   const cart = getLocalStorage("so-cart") || [];
