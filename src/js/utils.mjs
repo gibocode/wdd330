@@ -134,3 +134,17 @@ export function removeAllAlerts() {
   const alerts = document.querySelectorAll(".alert");
   alerts.forEach((alert) => document.querySelector("main").removeChild(alert));
 }
+
+export function getProductComments(productId) {
+  const allComments = getLocalStorage("product-comments") || {};
+  return allComments[productId] || [];
+}
+
+export function saveProductComment(productId, commentObj) {
+  const allComments = getLocalStorage("product-comments") || {};
+  if (!allComments[productId]) {
+    allComments[productId] = [];
+  }
+  allComments[productId].push(commentObj);
+  setLocalStorage("product-comments", allComments);
+}

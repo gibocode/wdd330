@@ -1,4 +1,4 @@
-import { addItemToCart, alertMessage } from "./utils.mjs";
+import { addItemToCart, alertMessage, getProductComments, saveProductComment } from "./utils.mjs";
 import BreadcrumbItem from "./components/BreadcrumbItem";
 import BreadcrumbList from "./components/BreadcrumbList";
 
@@ -12,6 +12,9 @@ export default class ProductDetails {
   async init() {
     this.product = await this.dataSource.findProductById(this.productId);
     this.renderProductDetails();
+
+    this.renderComments();
+
     document
       .getElementById("add-to-cart")
       .addEventListener("click", this.addToCart.bind(this));
@@ -27,6 +30,8 @@ export default class ProductDetails {
       breadcrumbList.addItem(breadcrumItem);
     });
     breadcrumbList.renderItems();
+
+    this.addCommentListener();
   }
 
   addToCart(e) {
@@ -39,6 +44,34 @@ export default class ProductDetails {
 
   renderProductDetails() {
     productDetailsTemplate(this.product);
+  }
+
+  renderComments() {
+    const commentList = document.getElementById("commentList");
+    const comments = getProductComments(this.product.Id);
+    commentList.innerHTML = "";
+
+    comments.forEach(({ name, comment }) => {
+      const li = document.createElement("li");
+      li.textContent = `${name}: ${comment}`;
+      commentList.appendChild(li);
+    });
+  }
+
+  addCommentListener() {
+    const form = document.getElementById("commentForm");
+    form.addEventListener("submit", (e) => {
+      e.preventDefault();
+      const formData = new FormData(form);
+      const name = formData.get("name").trim();
+      const comment = formData.get("comment").trim();
+
+      if (name && comment) {
+        saveProductComment(this.product.Id, { name, comment });
+        form.reset();
+        this.renderComments();
+      }
+    });
   }
 }
 
