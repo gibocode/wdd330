@@ -305,6 +305,59 @@ button {
   font-size: 1em;
 }
 
+/* Dialog style */
+dialog {
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  margin: 0;
+  width: 90%;
+  max-width: 600px;
+  border: 1px solid rgb(0 0 0/10%);
+  border-radius: 0.25rem;
+  background-color: #fff;
+  position: relative;
+}
+
+::backdrop {
+  background-color: rgb(0 0 0 / 50%);
+}
+
+dialog .header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 1rem 1rem 0 1rem;
+}
+
+dialog .header>button {
+  background-color: var(--tertiary-color) !important;
+  padding: 0.3rem 0.7rem !important;
+  border-radius: 0.25rem;
+  margin: 0px !important;
+}
+
+.btn-quick-view {
+  position: absolute;
+  right: 20px;
+  bottom: 20px;
+  color: var(--primary-color);
+}
+
+.btn-quick-view {
+  position: absolute;
+  right: 20px;
+  bottom: 20px;
+  color: var(--primary-color);
+  transition: transform 0.5s ease;
+}
+
+.btn-quick-view:hover {
+  color: var(--tertiary-color);
+  transform: scale(1.2) rotate(360deg);
+}
+
 /* End product list card */
 
 .product-detail {
