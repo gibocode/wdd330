@@ -155,3 +155,9 @@ export function saveProductComment(productId, commentObj) {
   allComments[productId].push(commentObj);
   setLocalStorage("product-comments", allComments);
 }
+
+
+export function getDiscountPercent(finalPrice, originalPrice) {
+  const discount = 1 - (finalPrice / originalPrice);
+  return Math.round(discount * 100);
+}
