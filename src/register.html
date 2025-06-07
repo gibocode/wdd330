@@ -1,0 +1,92 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Sleep Outside|Home</title>
+    <link rel="stylesheet" href="/css/style.css" />
+    <script src="/js/main.js" type="module"></script>
+  </head>
+
+  <body>
+    <header class="divider" id="main-header"></header>
+    <main class="divider">
+      <div class="card">
+        <div class="card-title">Customer Registration</div>
+        <div class="card-body">
+          <form id="registration-form" enctype="multipart/form-data">
+            <div class="form-group">
+              <label
+                >*Name
+                <input
+                  class="form-control"
+                  type="text"
+                  name="name"
+                  id="name"
+                  title="Name"
+                  required
+                />
+              </label>
+            </div>
+            <div class="form-group">
+              <label
+                >*Address
+                <input
+                  class="form-control"
+                  type="text"
+                  name="address"
+                  id="address"
+                  title="Address"
+                  required
+                />
+              </label>
+            </div>
+            <div class="form-group">
+              <label
+                >Avatar
+                <input
+                  class="form-control"
+                  type="file"
+                  name="avatar"
+                  id="avatar"
+                  title="Avatar"
+                  accept=".png, .jpeg, .jpg, .webp"
+                />
+              </label>
+              <div class="avatar-container"></div>
+            </div>
+            <div class="form-group">
+              <label
+                >*Email
+                <input
+                  class="form-control"
+                  type="email"
+                  name="email"
+                  id="email"
+                  title="Email"
+                  required
+                />
+              </label>
+            </div>
+            <div class="form-group">
+              <label
+                >*Password
+                <input
+                  class="form-control"
+                  type="password"
+                  name="password"
+                  id="password"
+                  title="Password"
+                  required
+                />
+              </label>
+            </div>
+            <button type="submit" id="register-button">Register</button>
+            <div class="text-sm">*required fields</div>
+          </form>
+        </div>
+      </div>
+    </main>
+    <footer id="main-footer"></footer>
+  </body>
+</html>

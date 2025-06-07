@@ -55,5 +55,17 @@ export default class ExternalServices {
     }
 
     return allProducts;
-    }
+  }
+
+  async register(payload) {
+    const response = await fetch(`${baseURL}users`, {
+      method: "POST",
+      body: payload,
+      headers: {
+        "Content-Type": "application/json"
+      }
+    });
+    const data = await response.json();
+    return data.message;
+  }
 }
