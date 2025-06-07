@@ -10,25 +10,47 @@
     <p>qty: <span id="qty-${Id}">${quantity}</span></p>
     <div>
       <a role="button" href="#" class="qty-up" data-id="${Id},${FinalPrice}">
-        <svg height="30" width="30"  fill=var(--tertiary-color) viewBox="0 0 48 48" xmlns="http://www.w3.org/2000/svg">
+        <svg
+          height="30"
+          width="30"
+          fill="var(--tertiary-color)"
+          viewBox="0 0 48 48"
+          xmlns="http://www.w3.org/2000/svg"
+        >
           <path
-            d="M24 4C12.95 4 4 12.95 4 24s8.95 20 20 20 20-8.95 20-20S35.05 4 24 4zm10 22h-8v8h-4v-8h-8v-4h8v-8h4v8h8v4z" />
+            d="M24 4C12.95 4 4 12.95 4 24s8.95 20 20 20 20-8.95 20-20S35.05 4 24 4zm10 22h-8v8h-4v-8h-8v-4h8v-8h4v8h8v4z"
+          />
         </svg>
       </a>
       <a role="button" href="#" class="qty-down" data-id="${Id},${FinalPrice}">
-        <svg height="30" width="30" fill=var(--light-grey) viewBox="0 0 48 48" xmlns="http://www.w3.org/2000/svg">
-          <path d="M24 4C12.95 4 4 12.95 4 24s8.95 20 20 20 20-8.95 20-20S35.05 4 24 4zm10 22H14v-4h20v4z" />
+        <svg
+          height="30"
+          width="30"
+          fill="var(--light-grey)"
+          viewBox="0 0 48 48"
+          xmlns="http://www.w3.org/2000/svg"
+        >
+          <path
+            d="M24 4C12.95 4 4 12.95 4 24s8.95 20 20 20 20-8.95 20-20S35.05 4 24 4zm10 22H14v-4h20v4z"
+          />
         </svg>
       </a>
     </div>
   </div>
   <div class="cart-btn__remove">
     <button class="remove-from-cart" title="Remove from cart" data-id="${Id}">
-      <svg width="25" height="25" fill="currentColor" viewBox="0 0 512 512" xmlns="http://www.w3.org/2000/svg">
+      <svg
+        width="25"
+        height="25"
+        fill="currentColor"
+        viewBox="0 0 512 512"
+        xmlns="http://www.w3.org/2000/svg"
+      >
         <title />
         <rect height="80" rx="32" ry="32" width="448" x="32" y="48" />
         <path
-          d="M74.45,160a8,8,0,0,0-8,8.83L92.76,421.39a1.5,1.5,0,0,0,0,.22A48,48,0,0,0,140.45,464H371.54a48,48,0,0,0,47.67-42.39l0-.21,26.27-252.57a8,8,0,0,0-8-8.83ZM323.31,340.69a16,16,0,1,1-22.63,22.62L256,318.63l-44.69,44.68a16,16,0,0,1-22.63-22.62L233.37,296l-44.69-44.69a16,16,0,0,1,22.63-22.62L256,273.37l44.68-44.68a16,16,0,0,1,22.63,22.62L278.62,296Z" />
+          d="M74.45,160a8,8,0,0,0-8,8.83L92.76,421.39a1.5,1.5,0,0,0,0,.22A48,48,0,0,0,140.45,464H371.54a48,48,0,0,0,47.67-42.39l0-.21,26.27-252.57a8,8,0,0,0-8-8.83ZM323.31,340.69a16,16,0,1,1-22.63,22.62L256,318.63l-44.69,44.68a16,16,0,0,1-22.63-22.62L233.37,296l-44.69-44.69a16,16,0,0,1,22.63-22.62L256,273.37l44.68-44.68a16,16,0,0,1,22.63,22.62L278.62,296Z"
+        />
       </svg>
     </button>
   </div>

@@ -43,8 +43,7 @@ p {
 
 .logo {
   line-height: 60px;
-  width: 245px;
-  overflow: hidden;
+  width: 345px;
   display: flex;
   font-size: 30px;
   text-align: right;
@@ -331,7 +330,7 @@ dialog .header {
   padding: 1rem 1rem 0 1rem;
 }
 
-dialog .header>button {
+dialog .header > button {
   background-color: var(--tertiary-color) !important;
   padding: 0.3rem 0.7rem !important;
   border-radius: 0.25rem;
@@ -426,7 +425,7 @@ dialog .header>button {
   grid-column: 3/4;
 }
 
-.cart-card__quantity p>span {
+.cart-card__quantity p > span {
   font-weight: 800;
 }
 
@@ -941,4 +940,137 @@ footer {
 
 #commentForm button:hover {
   background-color: var(--secondary-color);
+}
+
+/* Registration Page */
+.card {
+  border: 1px solid #8a470c79;
+  border-radius: 10px;
+  margin: 20px;
+  overflow: hidden;
+}
+
+.card-title {
+  text-align: center;
+  padding: 20px;
+  font-weight: bold;
+  font-size: 1.5rem;
+  background-color: #8a460c;
+  color: white;
+}
+
+.card-body {
+  padding: 30px;
+}
+
+#registration-form {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.form-group {
+  margin-bottom: 10px;
+}
+
+.form-group:nth-child(3) {
+  display: flex;
+}
+
+#registration-form label {
+  display: grid;
+  grid-template-columns: 1fr;
+  font-size: 1rem;
+}
+
+.form-control {
+  font-size: 1.1rem;
+  padding: 10px;
+  border: 1px solid rgba(0, 0, 0, 0.2);
+  border-radius: 5px;
+  margin-top: 5px;
+}
+
+.avatar-container {
+  display: flex;
+  justify-self: start;
+}
+.avatar-image {
+  width: 60px;
+  height: 60px;
+  margin: 10px;
+}
+
+.remove-avatar-button {
+  background-color: #a91515;
+  font-size: 0.9rem;
+  padding: 10px 15px;
+}
+
+.text-sm {
+  font-size: 0.9rem;
+}
+
+.alert-list {
+  margin: 10px;
+  animation: 0.5s ease-in appear;
+  animation-fill-mode: forwards;
+}
+
+.alert-list > p {
+  padding: 20px;
+  font-weight: normal;
+  /* border: 1px solid transparent; */
+}
+
+.alert-primary {
+  color: #004085;
+  background-color: #cce5ff;
+  border-color: #b8daff;
+}
+
+.alert-danger {
+  color: #721c24;
+  background-color: #f8d7da;
+  border-color: #f5c6cb;
+}
+
+.alert-success {
+  color: #155724;
+  background-color: #d4edda;
+  border-color: #c3e6cb;
+}
+
+.topnav {
+  padding: 0 20px;
+  width: 100%;
+  display: flex;
+  justify-content: end;
+}
+
+.btn {
+  text-decoration: none;
+  border: none;
+  background-color: #004085;
+  color: #fff;
+  padding: 10px 20px;
+  transition: all 0.1s linear;
+  cursor: pointer;
+}
+
+.btn-default:hover {
+  background-color: #ac5b16;
+}
+
+.btn-default {
+  background-color: #8a460c;
+}
+
+@keyframes appear {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
 }
